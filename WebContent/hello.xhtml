@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      > 
+
+<h:head></h:head> 
+<body> 
+
+	
+
+	<h:form>
+	  <p:messages />
+	  <p:panelGrid columns="2">
+		<h:outputText value="Name: " required="true" />
+		<p:inputText value="#{helloBean.name}"/>
+		<h:outputText value="Date: "/>
+		<p:calendar/>
+		<h:outputText value="#{helloBean.salute}" rendered="#{not empty helloBean.salute}"/>		
+	  </p:panelGrid>
+	  <h:commandButton action="#{helloBean.doSalute}" value="Salute" type="submit"/> 
+	</h:form>
+	
+	<!-- Table from the database -->
+	<h:form>
+	    <p:dataTable var="n" value="#{helloBean.nomi}" rows="10"
+	                         paginator="true"
+	                         rowsPerPageTemplate="5,10,15">
+	        <p:column headerText="Id">
+	            <h:outputText value="#{n.id}" />
+	        </p:column>
+	 
+	        <p:column headerText="Nome">
+	            <h:outputText value="#{n.nome}" />
+	        </p:column>
+	 
+	    </p:dataTable>
+	</h:form>
+	
+
+</body> 
+</html>
